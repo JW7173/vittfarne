@@ -1,0 +1,16 @@
+template:
+  - sensor:
+    # Gyro monterat 90 grader fel på roll (Väggmontering)
+    - name: "x_angle"
+      unique_id: 2ea3c5a0-5472-470a-8737-878177d190d1
+      state_class: measurement
+      unit_of_measurement: "°"
+      state: >
+        {{ ((states('sensor.esp32_c6_gyro_pan1roll') | float) +87.4) | round(2)}}
+
+    - name: "y_angle"
+      unique_id: 2ea3c5a0-5472-470a-8337-888177d190d1
+      state_class: measurement
+      unit_of_measurement: "°"
+      state: >
+        {{ ((states('sensor.esp32_c6_gyro_pan1pitch') | float) -1.4) | round(2)}}
