@@ -17,3 +17,10 @@ https://www.electrokit.com/mpu-6050-accelerometer-3-axel-gyro-monterad-pa-kort
 
 Vanomation (Utvecklare)
 https://van-automation.com/adding_van_tilt_sensor.html
+
+Kopplingsschema
+
+ESP32 C6 3.3V   --> MPU6050 VCC
+ESP32 C6 GND    --> MPU6050 GND
+ESP32 C6 GPIO2  --> MPU6050 SDA
+ESP32 C6 GPIO3  --> MPU6050 SCL
