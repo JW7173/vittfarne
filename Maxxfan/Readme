@@ -1,6 +1,6 @@
 Kopplingsschema
 
-ESP8266 3V3  --> Motstånd (220k oHm) --> IR diod --> ESP8266 D6
+ESP8266 3V3  --> Motstånd (220k oHm) --> IR diod (långa benet mot motstånd) --> ESP8266 D6
 
 Länkar till produkter
 
