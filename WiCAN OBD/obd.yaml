@@ -1,0 +1,185 @@
+mqtt:
+  sensor:
+    # Motor varv per minut
+    - state_topic: "wican/enginerpm"
+      name: "Varv per minut (RPM)"
+      unique_id: "56249526-3ca4-4bff-bcd3-76d518af3f51"
+      value_template: '{{ value_json["0C-EngineRPM"] | default(0) }}'
+      icon: mdi:turbine
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # Kylvätska temperatur
+    - state_topic: "wican/enginecoolanttemp"
+      name: "Kylvätska temperatur"
+      unique_id: d0810a01-2607-4b1b-874d-c462f792de21
+      icon: mdi:thermometer
+      device_class: temperature
+      state_class: measurement
+      unit_of_measurement: "°C"
+      value_template: '{{ value_json["05-EngineCoolantTemp"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # Tank volym
+    - state_topic: "wican/fueltanklevel"
+      name: "tank_volym"
+      unique_id: "28f5e4d9-8a4b-4691-83d2-3f56d1868238"
+      icon: mdi:gas-station
+      device_class: moisture
+      state_class: measurement
+      unit_of_measurement: "%"
+      value_template: '{{ value_json["2F-FuelTankLevel"] }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # Tank volym last value
+    - state_topic: "wican/fueltanklevel"
+      name: "tank_volym_last_value"
+      unique_id: "28f5e4d9-8a4b-4691-81d2-3f46c1868238"
+      icon: mdi:gas-station
+      device_class: moisture
+      state_class: measurement
+      unit_of_measurement: "%"
+      value_template: >-
+        {% set e = states('sensor.tank_volym') %}
+        {% if e | is_number and e | int(0) > 0 %}
+          {{ e | int(0) }}
+        {% endif %}
+    # {% else %}
+    # {{ this.state }}
+
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # Hastighet
+    - state_topic: "wican/vehiclespeed"
+      name: "Hastighet"
+      unique_id: "421eaea3-b9a4-44de-8e7d-a8dc70e87c6d"
+      state_class: measurement
+      unit_of_measurement: "km/h"
+      icon: mdi:speedometer
+      value_template: '{{ value_json["0D-VehicleSpeed"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # Engine load
+    - state_topic: "wican/calcengineload"
+      name: "Motorlast"
+      unique_id: "e91e5447-f517-491f-94c1-08bcb03a75ca"
+      value_template: '{{ value_json["04-CalcEngineLoad"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # MonitorStatus
+    - state_topic: "wican/monitorstatus"
+      name: "MonitorStatus"
+      unique_id: "eabb8176-6aed-477f-8ceb-3996f7c4e51c"
+      value_template: '{{ value_json["01-MonitorStatus"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # omgivningstemperatur 
+    - state_topic: "wican/intakeairtemperature"
+      name: "Omgivningstemperatur"
+      unique_id: 08a8e060-7f74-4849-90c9-c74f0a7320ac
+      icon: mdi:thermometer-lines
+      device_class: temperature
+      state_class: measurement
+      unit_of_measurement: "°C"
+      value_template: '{{ value_json["0F-IntakeAirTemperature"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # monstatusdrivecycle 
+    - state_topic: "wican/monstatusdrivecycle"
+      name: "Mon Statusdrive Cycle"
+      unique_id: c393db8d-0ef1-4bcf-86a6-dc2328f3495a
+      value_template: '{{ value_json["41-MonStatusDriveCycle"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # fuelrailgaug 
+    - state_topic: "wican/fuelrailgaug"
+      name: "Fuel rail gaug"
+      unique_id: e0c62104-d792-4c92-9e60-73abb30fdb6d
+      value_template: '{{ value_json["23-FuelRailGaug"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+    # distancemilon 
+    - state_topic: "wican/distancemilon"
+      name: "Distance MIL On"
+      unique_id: 7c2e4e53-feb2-4911-957d-0d6842faa56c
+      value_template: '{{ value_json["21-DistanceMILOn"] | default(0) }}'
+      device: {
+        identifiers: [
+          "WiCAN"
+        ],
+        manufacturer: "MeatPi",
+        model: "WiCAN OBD",
+        name: "WiCAN"}
+
+  binary_sensor:
+  - state_topic: "wican/can/status"
+    name: "OBD Status"
+    unique_id: d95384c9-bf83-40df-be07-cb1384a1b450
+    payload_on: '{"status": "online"}'
+    payload_off: '{"status": "offline"}'
+    device: {
+      identifiers: [
+        "WiCAN"
+      ],
+      manufacturer: "MeatPi",
+      model: "WiCAN OBD",
+      name: "WiCAN"}
