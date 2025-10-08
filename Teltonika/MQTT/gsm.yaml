@@ -1,0 +1,229 @@
+mqtt:
+  sensor:
+    # GSM
+    # Connection state
+    - state_topic: "teltonika/mobile"
+      name: "Anslutningsstatus"
+      unique_id: "17b3a864-50cd-4513-bb5d-6a3721971aea"
+      value_template: "{{ value_json.gsm.connstate }}"
+      icon: mdi:car-connected
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Operatör
+    - state_topic: "teltonika/mobile"
+      name: "Operatör"
+      unique_id: "baaa2c70-8b2d-42fa-aee5-198c637a21bf"
+      value_template: "{{ value_json.gsm.operator }}"
+      icon: mdi:sim
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Connection type
+    - state_topic: "teltonika/mobile"
+      name: "Uppkopplingstyp"
+      unique_id: "519db60f-a4bd-4f0c-a168-39df8acef6e1"
+      value_template: "{{ value_json.gsm.conntype }}"
+      icon: mdi:signal-cellular-3
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Nätverk
+    - state_topic: "teltonika/mobile"
+      name: "Nätverk"
+      unique_id: "4e63b6d5-f31c-4b91-994e-720c1f21ce90"
+      value_template: "{{ value_json.gsm.opernum }}"
+      icon: mdi:signal-5g
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # RSSI
+    - state_topic: "teltonika/mobile"
+      name: "RSSI"
+      unique_id: "2bc75fba-8d71-4a1d-9297-13416eabe801"
+      value_template: "{{ value_json.gsm.rssi }}"
+      device_class: signal_strength
+      state_class: measurement
+      unit_of_measurement: "dBm"
+      icon: mdi:broadcast
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Temp
+    - state_topic: "teltonika/mobile"
+      name: "Modem temperatur"
+      unique_id: "85bfdc5c-6d73-4123-9e2f-6fe0f3627b49"
+      value_template: "{{ (value_json.gsm.temp / 10) }}"
+      device_class: temperature
+      unit_of_measurement: "°C"
+      icon: mdi:temperature-celsius
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # IpV4
+    - state_topic: "teltonika/mobile"
+      name: "IP adress"
+      unique_id: "327ddf67-46f0-4ce4-b205-3d87520c7d87"
+      value_template: "{{ value_json.gsm.ip[0] }}"
+      icon: mdi:ip-network
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Nerladdning
+    - state_topic: "teltonika/mobile"
+      name: "Nerladdning"
+      unique_id: "f2a0dc19-7b95-442c-a31b-2f276a15dba6"
+      value_template: "{{ (value_json.datausage.rx / 1000000) | round(2) }}"
+      device_class: data_size
+      unit_of_measurement: "MB"
+      icon: mdi:cloud-download
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Uppladdning
+    - state_topic: "teltonika/mobile"
+      name: "Uppladdning"
+      unique_id: "6c066862-f1d8-4214-b510-faa844743fd2"
+      value_template: "{{ (value_json.datausage.tx / 1000000) | round(2) }}"
+      device_class: data_size
+      unit_of_measurement: "MB"
+      icon: mdi:cloud-upload
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Netstate (place)
+    - state_topic: "teltonika/mobile"
+      name: "Nätstatus"
+      unique_id: "fadffee6-cd4d-48e2-8da0-2d8456cd306f"
+      value_template: "{{ value_json.gsm.netstate }}"
+      icon: mdi:wan
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Serving (tjänster)
+    - state_topic: "teltonika/mobile"
+      name: "Tjänster"
+      unique_id: "de1f9e00-ab57-4802-8479-c2f9f683c3ce"
+      value_template: "{{ value_json.gsm.serving }}"
+      icon: mdi:signal-distance-variant
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Nerladdning week
+    - state_topic: "teltonika/mobile"
+      name: "Nerladdning vecka"
+      unique_id: "9be7db59-b50d-4abc-962e-c227d7108b77"
+      value_template: "{{ (value_json.datausageweek.rx / 1000000) | round(2) }}"
+      device_class: data_size
+      unit_of_measurement: "MB"
+      icon: mdi:cloud-download
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Uppladdning week
+    - state_topic: "teltonika/mobile"
+      name: "Uppladdning vecka"
+      unique_id: "86715ac2-1a0b-44d7-928a-ba614b7d8c0b"
+      value_template: "{{ (value_json.datausageweek.tx / 1000000) | round(2) }}"
+      device_class: data_size
+      unit_of_measurement: "MB"
+      icon: mdi:cloud-upload
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Nerladdning month
+    - state_topic: "teltonika/mobile"
+      name: "Nerladdning månad"
+      unique_id: "6fa5dbee-25df-41ff-954d-422ddce6c057"
+      value_template: "{{ (value_json.datausagemonth.rx / 1000000) | round(2) }}"
+      device_class: data_size
+      unit_of_measurement: "MB"
+      icon: mdi:cloud-download
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
+
+    # Uppladdning month
+    - state_topic: "teltonika/mobile"
+      name: "Uppladdning månad"
+      unique_id: "50879959-1744-468d-9da2-89844b6c24e3"
+      value_template: "{{ (value_json.datausagemonth.tx / 1000000) | round(2) }}"
+      device_class: data_size
+      unit_of_measurement: "MB"
+      icon: mdi:cloud-upload
+      device: {
+        identifiers: [
+          "Teltonika GPS"
+        ],
+        manufacturer: "Teltonika",
+        model: "RUT906",
+        name: "Teltonika RUT906"}
