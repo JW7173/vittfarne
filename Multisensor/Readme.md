@@ -1,3 +1,10 @@
+# Komponenter som används
+
+ESP32 C6
+LD2420 (Microvågssensor)
+BME680/BME688 (Klimatsensor)
+BH1750 (Ljussensor)
+
 # Kopplingsschema multisensor
 
 ## Neutral
