@@ -1,9 +1,9 @@
 # Komponenter som används
 
-ESP32 C6
-LD2420 (Microvågssensor)
-BME680/BME688 (Klimatsensor)
-BH1750 (Ljussensor)
+- ESP32 C6 https://www.electrokit.com/utvecklingskort-esp32-c6
+- LD2420 (Microvågssensor) https://www.electrokit.com/rorelsesensor-mmwave-24ghz
+- BME680/BME688 (Klimatsensor) https://www.amazon.se/gp/product/B0DGPS9KRZ/ref=ox_sc_act_image_1?smid=A2WSSX5YFMIMA4&psc=1
+- BH1750 (Ljussensor) https://www.amazon.se/gp/product/B07NLL4SCB/ref=ox_sc_act_title_1?smid=A1X7QLRQH87QA3&th=1
 
 # Kopplingsschema multisensor
 
